@@ -1,0 +1,169 @@
+/* Custom scrollbar for a more polished look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #111827; /* bg-gray-900 */
+}
+::-webkit-scrollbar-thumb {
+    background: #22d3ee; /* cyan-400 */
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4; /* cyan-500 */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header scroll effect */
+.header-scrolled {
+    background-color: rgba(17, 24, 39, 0.85); /* bg-gray-900 with opacity */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Navigation Link Styles */
+.nav-link {
+    position: relative;
+    padding-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #22d3ee; /* cyan-400 */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #22d3ee; /* cyan-400 */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Section Title Underline */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #22d3ee; /* cyan-400 */
+    border-radius: 2px;
+}
+
+/* Typed.js Cursor */
+.typed-cursor {
+    color: #22d3ee; /* cyan-400 */
+    font-weight: 600;
+}
+
+/* Mobile Menu Animation */
+.mobile-menu-hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.mobile-menu-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Modal Styling */
+#message-modal.hidden {
+    display: none;
+}
+
+/* --- NEW ANIMATIONS --- */
+
+/* 1. Floating & Glowing Profile Picture Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes breathing-glow {
+    0% {
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(34, 211, 238, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+    }
+}
+
+.profile-picture-animation {
+    animation: float 4s ease-in-out infinite, breathing-glow 3s ease-in-out infinite;
+}
+
+/* 2. Animated Gradient Text for Main Title */
+.animated-gradient-text {
+    background: linear-gradient(to right, #f3f4f6, #22d3ee, #f3f4f6);
+    background-size: 200% auto;
+    color: #fff;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-gradient 3s linear infinite;
+}
+
+@keyframes text-gradient {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* 3. Project Card Styling */
+.reveal-card {
+    border: 0.1px solid white;
+}
+
+.reveal-card:hover {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+/* 4. Particle Canvas Styling */
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* 5. GitHub Logo Invert Filter */
+.github-logo-invert {
+    filter: invert(1);
+}
